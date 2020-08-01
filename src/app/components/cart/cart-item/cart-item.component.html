@@ -1,0 +1,31 @@
+<div class="cart-item">
+  <div class="row">
+    <div class="col-2 text-center">
+      <img [src]="cartItem.image" />
+    </div>
+
+    <div class="col-2 text-center">
+      <b>{{ cartItem.brand }}</b>
+    </div>
+    <div class="col-1 text-center">
+      {{ cartItem.qty }}
+    </div>
+    <div class="col-2 text-center">
+      {{ cartItem.price }}
+    </div>
+    <div class="col-2 text-center">
+      <strong>{{ cartItem.qty * cartItem.price | currency: "INR" }}</strong>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-success" (click)="payItem(cartItem.price)">
+        Pay
+      </button>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-outline-danger" (click)="clearIteams(cartItem)">
+        Remove
+      </button>
+    </div>
+  </div>
+</div>
+<hr />

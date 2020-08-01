@@ -1,0 +1,113 @@
+<app-admin-header></app-admin-header>
+<div class="row-10" id="header">
+  <div class="col text-center">
+    <h3>Add Products Here</h3>
+  </div>
+</div>
+<div class="container" id="form">
+  <!-- <div class="col"> -->
+  <form #productForm="ngForm" (ngSubmit)="sendProduct()">
+    <div class="form-group">
+      <label for="id">Product ID</label>
+      <input
+        type="text"
+        #id="ngModel"
+        [(ngModel)]="model.id"
+        id="id"
+        class="form-control"
+        name="id"
+        [ngClass]="{ 'is-invalid': id.touched && id.invalid }"
+      />
+      <span class="invalid-feedback">Please Enter Product ID</span>
+    </div>
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="text"
+        #image="ngModel"
+        [(ngModel)]="model.image"
+        id="image"
+        class="form-control"
+        name="image"
+        [ngClass]="{ 'is-invalid': image.touched && image.invalid }"
+      />
+      <span class="invalid-feedback">Please Enter Image URL</span>
+    </div>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input
+        type="text"
+        id="brand"
+        class="form-control"
+        name="brand"
+        #brand="ngModel"
+        [(ngModel)]="model.brand"
+        required
+        [ngClass]="{ 'is-invalid': brand.touched && brand.invalid }"
+      />
+      <span class="invalid-feedback">Please Enter Brand</span>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        #price="ngModel"
+        [(ngModel)]="model.price"
+        id="price"
+        class="form-control"
+        name="price"
+        [ngClass]="{ 'is-invalid': price.touched && price.invalid }"
+      />
+      <span class="invalid-feedback">Please Enter Price</span>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-block" type="submit">
+        Send Data
+      </button>
+    </div>
+  </form>
+  <!-- </div> -->
+</div>
+<!--
+
+Products Display 
+
+-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="row mt-5">
+        <div class="col-md-4 mb-3" *ngFor="let product of products">
+          <div class="card text-center">
+            <b class="card-title mt-3"> Brand : {{ product.brand }} </b>
+            <div class="card-body">
+              <img class="card-img" [src]="product.image" />
+              <div
+                class="card-body"
+                style="color: orangered; font-weight: 500;"
+              >
+                <b style="color: black;"> Price </b>:
+                {{ product.price | currency: "INR" }}
+              </div>
+            </div>
+            <div class="card-footer">
+              <button
+                class="btn btn-success mr-5"
+                (click)="editProduct(product)"
+              >
+                Update
+              </button>
+
+              <button
+                class="btn btn-danger ml-5"
+                (click)="deleteProduct(product)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

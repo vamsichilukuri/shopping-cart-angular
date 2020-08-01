@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="row-10 mt-5">
+  <div class="col-md-4 offset-md-4">
+    <div class="login-card card">
+      <div class="card-header text-center">
+        <h3>
+          LOGIN
+        </h3>
+      </div>
+      <div class="card-body">
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <label for="username">User Name</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': username.touched && username.invalid }"
+              #username="ngModel"
+              [(ngModel)]="model.username"
+              required
+            />
+            <span class="invalid-feedback">please enter name</span>
+          </div>
+          <div class="form-group is-invalid">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              #password="ngModel"
+              [ngClass]="{ 'is-invalid': password.touched && password.invalid }"
+              class="form-control"
+              [(ngModel)]="model.password"
+              required
+            />
+            <span class="invalid-feedback">please enter password</span>
+          </div>
+          <div class="form-group">
+            <input
+              type="checkbox"
+              name="remember"
+              id="remember"
+              #remember="ngModel"
+              required
+              [(ngModel)]="model.remember"
+            />
+            <label> Remember me? </label>
+          </div>
+          <div>
+            <button class="btn btn-success btn-block" type="submit">
+              Login
+            </button>
+            <button
+              class="btn btn-outline-secondary btn-block"
+              routerLink="/signup"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

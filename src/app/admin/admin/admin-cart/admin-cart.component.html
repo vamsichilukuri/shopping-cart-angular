@@ -1,0 +1,45 @@
+<app-admin-header></app-admin-header>
+<div class="container-fluied">
+  <h3
+    style="
+      background-color: gray;
+      padding: 10px;
+      color: white;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    "
+    class="text-center"
+  >
+    Customer Order's
+  </h3>
+  <div class="text-right pr-5">
+    <b>Total Items = {{ cartItems.length }}</b
+    >&nbsp; &nbsp;
+    <b>Total Cash = {{ totalBill | currency: "INR" }}</b>
+  </div>
+</div>
+<hr />
+<div class="container">
+  <div *ngFor="let cartItem of cartItems">
+    <div class="cart-item mt-5">
+      <div class="row">
+        <div class="col-3 text-center">
+          <img [src]="cartItem.image" />
+        </div>
+        <div class="col-2 text-center">
+          <b>{{ cartItem.brand }}</b>
+        </div>
+        <div class="col-2 text-center">
+          {{ cartItem.qty }}
+        </div>
+        <div class="col-2 text-center">
+          {{ cartItem.price }}
+        </div>
+        <div class="col-3 text-center">
+          <strong>{{ cartItem.qty * cartItem.price | currency: "INR" }}</strong>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <hr />
+</div>

@@ -1,0 +1,16 @@
+li {
+  list-style: none;
+}
+
+div h3 {
+  background-color: rgb(116, 115, 115);
+  color: aliceblue;
+  text-align: center;
+  padding: 10px;
+}
+
+#heading {
+  background-color: rgb(219, 218, 218);
+  color: rgb(49, 49, 49);
+  padding: 10px;
+}
